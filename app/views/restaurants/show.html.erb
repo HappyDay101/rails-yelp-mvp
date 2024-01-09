@@ -8,6 +8,7 @@
       <p><strong>Address:</strong> <%= @restaurant.address %></p>
       <p><strong>Phone Number:</strong> <%= @restaurant.phone_number %></p>
       <p><strong>Category:</strong> <%= @restaurant.category %></p>
+      <%= link_to 'Back to Restaurants', restaurants_path, class: 'btn btn-secondary mt-3' %>
     </div>
 
     <div class="col-md-6">
@@ -25,5 +26,4 @@
     </div>
   </div>
 
-  <%= link_to 'Back to Restaurants', restaurants_path, class: 'btn btn-secondary mt-3' %>
 </div>
