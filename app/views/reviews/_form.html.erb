@@ -1,11 +1,23 @@
-<!-- app/views/reviews/_form.html.erb -->
+<%= form_with(model: [@restaurant, @review], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.number_field :rating, in: 0..5, step: 1, class: 'form-control', id: 'review_rating', placeholder: 'Rating (0-5)' %>
+  </div>
 
-<%= simple_form_for([@restaurant, @review], html: { class: 'mt-4' }) do |f| %>
-  <div class="mb-3">
-    <%= f.input :rating, class: 'form-control', placeholder: 'Rating (0-5)' %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control' %>
   </div>
-  <div class="mb-3">
-    <%= f.input :content, class: 'form-control', placeholder: 'Review Content' %>
+
+  <div class="actions mt-3">
+    <%= form.submit 'Create Review', class: 'btn btn-primary' %>
   </div>
-  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
+
+<script>
+  $(document).on('input', '#review_rating', function() {
+    if (this.value > 5) {
+      this.value = 5;
+    }
+  });
+</script>
