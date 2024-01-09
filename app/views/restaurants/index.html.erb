@@ -1,9 +1,18 @@
-<h1>Restaurants</h1>
+<div class="container mt-4">
+  <h1 class="mb-4">Restaurants</h1>
 
-<% @restaurants.each do |restaurant| %>
-  <div>
-    <%= link_to restaurant.name, restaurant %>
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to restaurant.name, restaurant %></h5>
+            <p class="card-text"><strong>Category:</strong> <%= restaurant.category %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+  <%= link_to 'New Restaurant', new_restaurant_path, class: 'btn btn-primary mt-3' %>
+</div>

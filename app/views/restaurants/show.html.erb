@@ -1,17 +1,29 @@
-<h1><%= @restaurant.name %></h1>
+<div class="container mt-4">
+  <h1 class="mb-4"><%= @restaurant.name %></h1>
 
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.phone_number %></p>
-<p><%= @restaurant.category %></p>
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @restaurant.image_url, class: 'img-fluid mb-3' if @restaurant.image_url.present? %>
 
-<h2>Reviews</h2>
+      <p><strong>Address:</strong> <%= @restaurant.address %></p>
+      <p><strong>Phone Number:</strong> <%= @restaurant.phone_number %></p>
+      <p><strong>Category:</strong> <%= @restaurant.category %></p>
+    </div>
 
-<% @restaurant.reviews.each do |review| %>
-  <div>
-    <p><strong>Rating:</strong> <%= review.rating %></p>
-    <p><strong>Content:</strong> <%= review.content %></p>
+    <div class="col-md-6">
+      <h2>Reviews</h2>
+      <% @restaurant.reviews.each do |review| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= review.rating %> / 5</h5>
+            <p class="card-text"><%= review.content %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <%= render 'reviews/form' %>
+    </div>
   </div>
-<% end %>
 
-<%= render 'reviews/form' %>
-<%= link_to 'Back to Restaurants', restaurants_path %>
+  <%= link_to 'Back to Restaurants', restaurants_path, class: 'btn btn-secondary mt-3' %>
+</div>

@@ -1,7 +1,17 @@
-<%= simple_form_for(@restaurant) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :phone_number %>
-  <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"] %>
-  <%= f.button :submit %>
+<!-- app/views/restaurants/_form.html.erb -->
+
+<%= simple_form_for(@restaurant, html: { class: 'mt-4' }) do |f| %>
+  <div class="mb-3">
+    <%= f.input :name, class: 'form-control', placeholder: 'Restaurant Name' %>
+  </div>
+  <div class="mb-3">
+    <%= f.input :address, class: 'form-control', placeholder: 'Restaurant Address' %>
+  </div>
+  <div class="mb-3">
+    <%= f.input :phone_number, class: 'form-control', placeholder: 'Phone Number' %>
+  </div>
+  <div class="mb-3">
+    <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"], class: 'form-control' %>
+  </div>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
