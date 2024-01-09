@@ -8,10 +8,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @restaurant.reviews.new(review_params)
+
     if @review.save
       redirect_to @restaurant, notice: 'Review was successfully created.'
     else
-      render 'restaurants/show'
+      render :new  # This line should render the 'new' template
     end
   end
 
